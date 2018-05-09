@@ -1,6 +1,4 @@
-module Api
-  module V1
-    class BalanceloadsController < ApplicationController
+class Api::V1::BalanceloadsController < ApplicationController
 
       def index
         balanceloads = LoadBalance.order('created_at DESC');
