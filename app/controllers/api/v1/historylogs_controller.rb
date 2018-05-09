@@ -1,6 +1,4 @@
-module Api
-  module V1
-    class HistorylogsController < ApplicationController
+class Api::V1::HistorylogsController < ApplicationController
 
       def index
         historylogs = HistoryLog.order('created_at DESC');
