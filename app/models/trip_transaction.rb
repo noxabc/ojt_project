@@ -1,5 +1,5 @@
 class TripTransaction < ApplicationRecord
-  belongs_to :profile
+  belongs_to :user
 
   validates :pickup_location, presence: true
   validates :drop_location, presence: true
