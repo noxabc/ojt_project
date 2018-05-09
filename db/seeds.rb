@@ -1,5 +1,5 @@
 5.times do
-  Profile.create({
+  User.create({
     last_name: Faker::Name.last_name,
     first_name: Faker::Name.first_name,
     middle_name: Faker::Name.last_name,
