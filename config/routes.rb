@@ -8,4 +8,8 @@ Rails.application.routes.draw do
       resources :balanceloads
     end
   end
+
+  post   'session', to: 'session#create', as: 'login'
+  delete 'session', to: 'session#destroy', as: 'logout'
+
 end
