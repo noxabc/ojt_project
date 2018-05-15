@@ -1,5 +1,9 @@
 class SessionController < ApplicationController
 
+  def current_user
+    @current_user ||= authentication_auth_token
+  end
+
   def create
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
@@ -10,4 +14,7 @@ class SessionController < ApplicationController
     end
   end
 
+  def destroy
+    current_user = nil
+  end
 end
