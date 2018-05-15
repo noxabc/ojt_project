@@ -4,7 +4,6 @@ class CreateBalanceLoads < ActiveRecord::Migration[5.2]
       t.integer :amount_loaded
       t.integer :remaining_load
 
-
       t.timestamps
     end
   end
