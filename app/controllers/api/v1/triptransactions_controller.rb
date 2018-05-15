@@ -40,5 +40,4 @@ class Api::V1::TriptransactionsController < ApplicationController
   def triptransaction_params
     params.permit(:pickup_location, :drop_location, :trip_amount)
   end
-
 end
