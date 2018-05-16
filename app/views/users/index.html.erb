@@ -1,0 +1,24 @@
+<div class="">
+  <p>User Index</p>
+  <table>
+    
+    <tr>
+      <th>Last Name</th>
+      <th>First Name</th>
+      <th>Middle Name</th>
+      <th>Email</th>
+      <th>Mobile Number</th>
+    </tr>
+
+    <% @users.each do |user| %>
+      <tr>
+        <td> <%= user.last_name %> </td>
+        <td> <%= user.first_name %> </td>
+        <td> <%= user.middle_name %> </td>
+        <td> <%= user.email %> </td>
+        <td> <%= user.mobile_number %> </td>
+      </tr>
+    <% end %>
+
+  </table>
+</div>
