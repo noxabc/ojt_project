@@ -7,6 +7,6 @@ class User < ApplicationRecord
   # validates :first_name, presence: true
   # validates :middle_name, presence: true
   # validates :email, presence: true
-  # validates :password, presence: true
+  validates :password, presence: true, :on => :create
   # validates :mobile_number, presence: true
 end
