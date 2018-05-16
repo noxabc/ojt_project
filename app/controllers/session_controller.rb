@@ -5,6 +5,7 @@ class SessionController < ApplicationController
   end
 
   def create
+    p params
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       user.regenerate_auth_token
