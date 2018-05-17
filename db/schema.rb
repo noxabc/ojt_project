@@ -10,42 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_02_111124) do
+ActiveRecord::Schema.define(version: 2018_05_09_060941) do
 
   create_table "balance_loads", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "amount_loaded"
     t.integer "remaining_load"
-    t.bigint "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["profile_id"], name: "index_balance_loads_on_profile_id"
   end
 
   create_table "history_loads", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "amount_loaded"
-    t.bigint "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["profile_id"], name: "index_history_loads_on_profile_id"
   end
 
   create_table "history_logs", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "last_name"
     t.string "first_name"
-    t.bigint "profile_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["profile_id"], name: "index_history_logs_on_profile_id"
-  end
-
-  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.string "last_name"
-    t.string "first_name"
-    t.string "middle_name"
-    t.string "email"
-    t.string "password_digest"
-    t.string "mobile_number"
-    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -54,14 +36,26 @@ ActiveRecord::Schema.define(version: 2018_05_02_111124) do
     t.string "pickup_location"
     t.string "drop_location"
     t.integer "trip_amount"
-    t.bigint "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["profile_id"], name: "index_trip_transactions_on_profile_id"
   end
 
-  add_foreign_key "balance_loads", "profiles"
-  add_foreign_key "history_loads", "profiles"
-  add_foreign_key "history_logs", "profiles"
-  add_foreign_key "trip_transactions", "profiles"
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "last_name"
+    t.string "first_name"
+    t.string "middle_name"
+    t.string "email"
+    t.string "password_digest"
+    t.string "mobile_number"
+    t.string "status"
+    t.integer "balance_load_id"
+    t.integer "history_log_id"
+    t.integer "trip_transaction_id"
+    t.integer "history_load_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "auth_token"
+    t.index ["auth_token"], name: "index_users_on_auth_token", unique: true
+  end
+
 end

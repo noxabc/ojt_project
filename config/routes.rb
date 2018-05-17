@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   namespace 'api' do
     namespace 'v1' do
       resources :users
@@ -11,6 +12,12 @@ Rails.application.routes.draw do
   post   'session', to: 'session#create', as: 'login'
   delete 'session', to: 'session#destroy', as: 'logout'
 
-  #For views
-  resources :users
+  get 'users/index'
+  get 'users/users'
+  get 'users/trip_transactions'
+  get 'users/balance_loads'
+  get 'users/history_loads'
+resources :users
+root 'users#login'
+
 end
